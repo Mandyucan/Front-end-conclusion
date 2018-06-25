@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+## display: none;与visibility: hidden;的区别 ##
 
-You can use the [editor on GitHub](https://github.com/Mandyucan/Front-end-interview/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+ - 联系：它们都能让元素不可见
+ - 区别：
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+1.`display:none`;会让元素完全从渲染树中消失，渲染的时候不占据任何空间；
 
-### Markdown
+`visibility: hidden`;不会让元素从渲染树消失，渲染师元素继续占据空间，只是内容不可见
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+2.`display: none`;是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示；
 
-```markdown
-Syntax highlighted code block
+`visibility: hidden`;是继承属性，子孙节点消失由于继承了hidden，通过设置`visibility: visible`;可以让子孙节点显式
 
-# Header 1
-## Header 2
-### Header 3
+3.修改常规流中元素的display通常会造成文档重排。
 
-- Bulleted
-- List
+修改visibility属性只会造成本元素的重绘。
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Mandyucan/Front-end-interview/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+4.读屏器不会读取`display: none`;元素内容；会读取`visibility: hidden`;元素内容
